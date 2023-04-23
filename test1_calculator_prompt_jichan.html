@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+    <style>
+        body {
+            background-color: rgb(96, 191, 64);
+        }
+
+        table {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            font-size: xx-large;
+        }
+
+
+        tr:nth-child(3) td:nth-child(1),
+        tr:nth-child(3) td:nth-child(2) {
+            border-top: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <table>
+        <td></td>
+        <td id="firstNum"></td>
+        <tr><!-- 첫번째 줄 시작 -->
+            <td id="operator"></td>
+            <td id="secondNum"></td>
+        </tr><!-- 첫번째 줄 끝 -->
+        <tr><!-- 두번째 줄 시작 -->
+            <td></td>
+            <td id="result"></td>
+        </tr><!-- 두번째 줄 끝 -->
+    </table>
+
+    <script>
+        alert(`본 계산기는 차례대로 숫자, 연산자, 숫자를 받아서 계산해주는 파일 입니다.`);
+
+        let firstNum = parseInt(prompt("첫번째 숫자를 입력하세요", 000));
+
+        while (isNaN(firstNum)) {
+            alert(`숫자를 입력하세요`);
+            firstNum = parseInt(prompt("첫번째 숫자를 입력하세요", 000));
+        }
+
+        let operator = prompt(`연산자를 입력하세요`, `+ : 더하기 - : 빼기 * : 곱하기 / : 나누기`);
+
+        while (operator !== "+" && operator !== "-" && operator !== "*" && operator !== "/") {
+            alert(`+ , - , * , / 중에서 하나를 입력하세요`);
+            operator = prompt(`연산자를 입력하세요`, `+ : 더하기 - : 빼기 * : 곱하기 / : 나누기`);
+        }
+
+        let secondNum = parseInt(prompt("두번째 숫자를 입력하세요", 000));
+
+        while (isNaN(secondNum)) {
+            alert(`숫자를 입력하세요`);
+            secondNum = parseInt(prompt("두번째 숫자를 입력하세요", 000));
+        }
+
+        let result = 0;
+
+        if (operator === "+") {
+            result = firstNum + secondNum;
+        }
+
+        if (operator === "-") {
+            result = firstNum - secondNum;
+        }
+
+        if (operator === "*") {
+            operator = "x"
+            result = firstNum * secondNum;
+        }
+
+        if (operator === "/") {
+            operator = "÷"
+            result = firstNum / secondNum;
+        }
+
+        document.getElementById("firstNum").innerHTML = firstNum;
+        document.getElementById("secondNum").innerHTML = secondNum;
+        document.getElementById("operator").innerHTML = operator;
+        document.getElementById("result").innerHTML = result;
+    </script>
+
+    <!-- <script>
+        let firstNum = 50;
+        let secondNum = 60;
+        let operator = "+";
+        let result = 11000000;
+
+        let cell = document.getElementById("firstNum");
+        cell.innerHTML = `${firstNum}`;
+
+        let cell2 = document.getElementById("secondNum");
+        cell2.innerHTML = `${secondNum}`;
+
+        let cell3 = document.getElementById("operator");
+        cell3.innerHTML = `${operator}`;
+
+        let cell4 = document.getElementById("result");
+        cell4.innerHTML = `${result}`;
+    </script> -->
+</body>
+
+</html>
